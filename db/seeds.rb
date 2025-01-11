@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# Adminの作成
+Admin.find_or_create_by(email: "admin123@gmail.com") do |user|
+  user.password = "admin123"
+end
