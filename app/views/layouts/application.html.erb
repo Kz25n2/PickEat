@@ -11,6 +11,26 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <header>
+      <%= link_to root_path do %>
+        <%= image_tag "logo.jpg", alt: PickEat, width: 200, height: 85 %>
+      <% end %>
+
+      <nav>
+        <%= render 'layouts/header' %>
+      </nav>
+
+    </header>
+
+    <main>
+      <p id="notice"><%= notice %></p>
+      <%= yield %>
+    </main>
+
+    <footer>
+
+    </footer>
+
   </body>
 </html>
