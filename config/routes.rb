@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :restaurants
-  devise_for :admins
+  devise_for :restaurants, controllers: {
+    registrations: "restaurant/registrations",
+    sessions: "restaurant/sessions",
+    passwords: "restaurant/passwords"
+  }
+  
+  devise_for :admins, skip: [:registrations, :passwords], controllers: {
+    sessions: "admin/sessions"
+  }
   
   devise_for :customers, controllers: {
     registrations: "public/registrations",

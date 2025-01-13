@@ -16,6 +16,48 @@
         <span>ログアウト</span>
       <% end %>
     </li>
+  <% elsif admin_signed_in? %>
+    <li>
+      <%= link_to root_path do %>
+        <span>店舗一覧</span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to root_path do %>
+        <span>会員一覧</span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to root_path do %>
+        <span>レビュー一覧</span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to root_path do %>
+        <span>ジャンル一覧</span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to destroy_admin_session_path, method: :delete do %>
+        <span>ログアウト</span>
+      <% end %>
+    </li>
+  <% elsif restaurant_signed_in? %>
+    <li>
+      <%= link_to root_path do %>
+        <span>店舗情報</span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to root_path do %>
+        <span>集客する</span>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to destroy_restaurant_session_path, method: :delete do %>
+        <span>ログアウト</span>
+      <% end %>
+    </li>
   <% else %>
     <li>
       <%= link_to root_path do %>
