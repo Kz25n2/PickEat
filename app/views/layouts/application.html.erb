@@ -24,8 +24,9 @@
     </header>
 
     <main>
-      <p id="notice"><%= notice %></p>
-      <p id="alert"><%= alert %></p>
+      <% flash.each do |message_type, message| %>
+        <div class="flash-message <%= message_type %>"><%= message %></div>
+      <% end %>
       <%= yield %>
     </main>
 

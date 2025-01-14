@@ -5,6 +5,12 @@ class Admin::GenresController < ApplicationController
   end
 
   def create
+    if params[:genre].blank?
+      @genres = Genre.all
+      flash[:alert] = "ジャンルを入力してください。"
+      render :index and return
+    end
+
     genre = Genre.new(genre_params)
     if genre.save
       @genres = Genre.all
