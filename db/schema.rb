@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_01_14_035600) do
+ActiveRecord::Schema.define(version: 2025_01_14_061527) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -91,7 +91,6 @@ ActiveRecord::Schema.define(version: 2025_01_14_035600) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer "genre_id", null: false
-    t.integer "coupon_id", null: false
     t.string "name", null: false
     t.string "postal_code", null: false
     t.string "address", null: false

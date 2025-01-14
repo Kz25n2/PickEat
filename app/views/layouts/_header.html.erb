@@ -2,12 +2,12 @@
 
   <% if customer_signed_in? %>
     <li>
-      <%= link_to root_path do %>
+      <%= link_to restaurants_path do %>
         <span>店舗一覧</span>
       <% end %>
     </li>
     <li>
-      <%= link_to root_path do %>
+      <%= link_to customer_path(current_customer) do %>
         <span>マイページ</span>
       <% end %>
     </li>
@@ -18,22 +18,22 @@
     </li>
   <% elsif admin_signed_in? %>
     <li>
-      <%= link_to root_path do %>
+      <%= link_to admin_path do %>
         <span>店舗一覧</span>
       <% end %>
     </li>
     <li>
-      <%= link_to root_path do %>
+      <%= link_to admin_customers_path do %>
         <span>会員一覧</span>
       <% end %>
     </li>
     <li>
-      <%= link_to root_path do %>
+      <%= link_to admin_reviews_path do %>
         <span>レビュー一覧</span>
       <% end %>
     </li>
     <li>
-      <%= link_to root_path do %>
+      <%= link_to admin_genres_path do %>
         <span>ジャンル一覧</span>
       <% end %>
     </li>
@@ -44,12 +44,12 @@
     </li>
   <% elsif restaurant_signed_in? %>
     <li>
-      <%= link_to root_path do %>
+      <%= link_to restaurant_path do %>
         <span>店舗情報</span>
       <% end %>
     </li>
     <li>
-      <%= link_to root_path do %>
+      <%= link_to restaurant_promotion_path do %>
         <span>集客する</span>
       <% end %>
     </li>
@@ -60,7 +60,7 @@
     </li>
   <% else %>
     <li>
-      <%= link_to root_path do %>
+      <%= link_to restaurants_path do %>
         <span>店舗一覧</span>
       <% end %>
     </li>
