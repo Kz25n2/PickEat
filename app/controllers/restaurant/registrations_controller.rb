@@ -59,6 +59,7 @@ class Restaurant::RegistrationsController < Devise::RegistrationsController
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [
       :name, 
+      :genre_id,
       :postal_code, 
       :address, 
       :contact_number, 
