@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_01_11_071658) do
+ActiveRecord::Schema.define(version: 2025_01_14_032539) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2025_01_11_071658) do
     t.integer "max_price", null: false
     t.integer "capacity", null: false
     t.boolean "parking_lot", default: true, null: false
-    t.integer "parking_spaces", null: false
+    t.integer "parking_spaces", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_restaurants_on_email", unique: true

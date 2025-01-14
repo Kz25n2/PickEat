@@ -4,6 +4,21 @@ class Restaurant::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
+  def create
+    if params[:restaurant][:parking_lot] == false
+      params[:reataurant][:parking_spaces] = 0
+    end
+    # parking_lotがtrueの場合のみparking_spacesを必須にする
+    if params[:restaurant][:parking_lot] == true && params[restaraunt][parking_lot].blank?
+      @restaurant = build_resouce(sign_up_params)
+      @restaurant.errors.add(parking_spaces, "は必須です")
+      render :new
+      return
+    end
+
+    super # 他の処理（ユーザー作成処理）をそのまま呼び出す
+  end
+
   # GET /resource/sign_up
   # def new
   #   super
