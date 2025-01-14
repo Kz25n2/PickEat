@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  restaurant_id: 1
+  name: MyString
+  terms: MyText
+  effective_date: 2025-01-14 03:54:27
+  is_active: false
+
+two:
+  restaurant_id: 1
+  name: MyString
+  terms: MyText
+  effective_date: 2025-01-14 03:54:27
+  is_active: false

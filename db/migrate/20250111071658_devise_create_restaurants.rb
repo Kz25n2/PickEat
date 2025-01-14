@@ -33,6 +33,8 @@ class DeviseCreateRestaurants < ActiveRecord::Migration[6.1]
       # t.datetime :locked_at
 
       # 店舗情報の保存
+      t.integer :genre_id, null: false
+      t.integer :coupon_id, null: false
       t.string :name, null: false
       t.string :postal_code, null: false
       t.string :address, null: false
