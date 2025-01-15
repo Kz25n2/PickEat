@@ -18,7 +18,7 @@
     </li>
   <% elsif admin_signed_in? %>
     <li>
-      <%= link_to admin_path do %>
+      <%= link_to admin_top_path do %>
         <span>店舗一覧</span>
       <% end %>
     </li>
@@ -44,7 +44,7 @@
     </li>
   <% elsif restaurant_signed_in? %>
     <li>
-      <%= link_to restaurant_path do %>
+      <%= link_to restaurant_top_path do %>
         <span>店舗情報</span>
       <% end %>
     </li>

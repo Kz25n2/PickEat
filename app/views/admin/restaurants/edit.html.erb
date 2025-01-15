@@ -1,5 +1,6 @@
-<%= form_with model: @restaurant, url: edit_admin_restaurant_path(restaurant), local: true do |f| %>
-  <%= render "restaurant/shared/error_messages", resource: resource %>
+<%= render 'layouts/errors', obj: @restaurant %>
+
+<%= form_with model: @restaurant, url: admin_restaurant_path(@restaurant), method: :patch, local: true do |f| %>
 
   <div class="field">
     <%= f.label :name, "店舗名" %>

@@ -12,7 +12,7 @@
   </tr>
   <tr>
     <th>郵便番号</th>
-    <td><%= @restaurant.postal_code %></td>
+    <td><%= @restaurant.formatted_postal_code %></td>
   </tr>
   <tr>
     <th>住所</th>
@@ -43,4 +43,4 @@
 
 </table>
 
-<%= link_to "編集", edit_admin_restaurant_path(@restaurant), class: "btn btn-primary" %>
+<%= link_to "編集", edit_admin_restaurant_path(@restaurant), class: "btn btn-primary", data: { "turbolinks" => false } %>

@@ -1,0 +1,10 @@
+<% restaurants.each do |restaurant| %>
+  <div class="card">
+    <%= link_to restaurant_path(restaurant), style:"color: #000; text-decoration: underline;" do  %>
+      <h4>店舗名：<%= restaurant.name %></h4>
+    <% end %>
+    <p>住所：<%= restaurant.address %></p>
+    <p>ジャンル：<%= restaurant.genre.name %></p>
+    <p>価格帯：<%= restaurant.min_price %>〜<%= restaurant.max_price %>円</p>
+  </div>
+<% end %>

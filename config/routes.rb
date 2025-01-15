@@ -24,15 +24,15 @@ Rails.application.routes.draw do
       patch 'restaurants/withdrawal'
       get 'restaurants/unsubscribe'
     end
-    get 'homes' => 'homes#top'
+    get '/top' => 'homes#top'
   end
   
   namespace :admin do
     resources :genres, only: [:index, :edit, :create, :update, :destroy]
     resources :reviews, only: [:index, :destroy]
-    resources :customers, only: [:index, :show, :edit, :update, :destroy]
+    resources :customers, only: [:index, :edit, :update, :destroy]
     resources :restaurants, only: [:show, :edit, :update, :destroy]
-    get 'homes' => 'homes#top'
+    get '/top' => 'homes#top'
   end
 
   scope module: :public do

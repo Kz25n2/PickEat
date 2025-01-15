@@ -6,7 +6,7 @@ class Restaurant::RegistrationsController < Devise::RegistrationsController
 
   def create
     if params[:restaurant][:parking_lot] == false
-      params[:reataurant][:parking_spaces] = 0
+      params[:restaurant][:parking_spaces] = 0
     end
     # parking_lotがtrueの場合のみparking_spacesを必須にする
     if params[:restaurant][:parking_lot] == true && params[restaraunt][parking_lot].blank?
