@@ -21,8 +21,12 @@ Rails.application.routes.draw do
     resources :coupons, only: [:index, :show, :create, :update, :destroy]
     resources :comments, only: [:index, :edit, :create, :update, :destroy]
     resources :owners, only: [:edit, :update] do
-      patch 'restaurants/withdrawal'
-      get 'restaurants/unsubscribe'
+      member do
+        patch :withdrawal
+      end
+      collection do
+        get :unsubscribe
+      end
     end
     get '/top' => 'homes#top'
   end

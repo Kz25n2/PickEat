@@ -3,5 +3,6 @@ class Restaurant::OwnersController < ApplicationController
   end
 
   def unsubscribe
+    @owner = current_restaurant
   end
 end
