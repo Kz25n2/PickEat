@@ -24,6 +24,16 @@ class Restaurant < ApplicationRecord
     postal_code.insert(3, '-') if postal_code.present?
   end
 
+  # ログイン可能かどうかを確認
+  def active_for_authentication?
+    super && is_active
+  end
+
+  # 退会済みユーザーに対するカスタムメッセージ
+  def inactive_message
+    is_active ? super : :inactive
+  end
+
   private
   
   def parking_lot?

@@ -63,6 +63,7 @@ class Admin::RestaurantsController < ApplicationController
       :capacity,
       :parking_lot,
       :parking_spaces
+      :is_active
     )
   end
 

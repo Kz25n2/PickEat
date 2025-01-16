@@ -1,6 +1,6 @@
 class Public::RestaurantsController < ApplicationController
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.where(is_active: true)
   end
 
   def show

@@ -1,5 +1,3 @@
-<h2>店舗詳細</h2>
-
 <table class="table">
 
   <tr>
@@ -12,7 +10,7 @@
   </tr>
   <tr>
     <th>郵便番号</th>
-    <td><%= @restaurant.postal_code %></td>
+    <td><%= @restaurant.formatted_postal_code %></td>
   </tr>
   <tr>
     <th>住所</th>
@@ -31,6 +29,10 @@
     <td><%= @restaurant.min_price %>〜<%= @restaurant.max_price %></td>
   </tr>
   <tr>
+    <th>収容人数</th>
+    <td><%= @restaurant.capacity %>人</td>
+  </tr>
+  <tr>
     <th>駐車場</th>
     <td>
       <% if @restaurant.parking_lot == true %>
@@ -44,6 +46,6 @@
 </table>
 
 <% if restaurant == current_restaurant %>
-  <%= link_to "編集", edit_restaurant_owner_path(restaurant), class: "btn btn-primary" %>
+  <%= link_to "編集", edit_restaurant_owner_path(restaurant), class: "btn btn-primary", data: { "turbolinks" => false } %>
   <%= link_to "退会", unsubscribe_restaurant_owners_path(current_restaurant), class: "btn btn-danger" %>
 <% end %>
