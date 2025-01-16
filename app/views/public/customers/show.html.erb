@@ -1,2 +1,35 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<h2>マイページ</h2>
+
+<table class="table table-bordered">
+  <tr>
+    <th class="col-3">名前</th>
+    <td class="col-9"><%= @customer.last_name %>　<%= @customer.first_name %></td>
+  </tr>
+  <tr>
+    <th class="col-3">フリガナ</th>
+    <td class="col-9"><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></td>
+  </tr>
+  <tr>
+    <th class="col-3">ニックネーム</th>
+    <td class="col-9"><%= @customer.nickname %></td>
+  </tr>
+  <tr>
+    <th class="col-3">メールアドレス</th>
+    <td class="col-9"><%= @customer.email %></td>
+  </tr>
+  <tr>
+    <th class="col-3">電話番号</th>
+    <td class="col-9"><%= @customer.telephone_number %></td>
+  </tr>
+  <tr>
+    <th class="col-3">郵便番号</th>
+    <td class="col-9"><%= @customer.formatted_postal_code %></td>
+  </tr>
+  <tr>
+    <th class="col-3">住所</th>
+    <td class="col-9"><%= @customer.address %></td>
+  </tr>
+</table>
+
+<%= link_to '編集', edit_customer_path(@customer), class: 'btn btn-primary' %>
+<%= link_to '退会', customer_customers_unsubscribe_path(@customer), class: 'btn btn-danger' %>

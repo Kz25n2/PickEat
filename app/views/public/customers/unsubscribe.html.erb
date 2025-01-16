@@ -1,2 +1,9 @@
-<h1>Public::Customers#unsubscribe</h1>
-<p>Find me in app/views/public/customers/unsubscribe.html.erb</p>
+<h2>退会確認画面</h2>
+
+<p>本当に退会しますか？</p>
+
+<p>退会するとアカウントおよびすべてのデータが削除されます。</p>
+<p>再度ご利用いただくには、新しいアカウントを作成する必要があります。</p>
+
+<%= link_to '戻る', customer_path(@customer), class: 'btn btn-primary' %>
+<%= link_to '退会する', customer_customers_withdrawal_path(@customer), method: :patch, class: 'btn btn-danger' %>

@@ -102,7 +102,7 @@ Customer.create!(
   password: "password123",
   password_confirmation: "password123",
   telephone_number: "080-9876-5432",
-  postal_code: "102-0071",
+  postal_code: "1020071",
   address: "東京都千代田区九段北1-2-3"
 )
 
@@ -130,6 +130,6 @@ Customer.create!(
   password: 'password123',
   password_confirmation: "password123",
   telephone_number: '080-1234-5678',
-  postal_code: '100-0001',
+  postal_code: '1000001',
   address: '東京都千代田区千代田1-1-1'
 )

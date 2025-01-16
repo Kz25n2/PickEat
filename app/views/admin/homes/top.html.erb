@@ -9,6 +9,8 @@
       <th>住所</th>
       <th>ジャンル</th>
       <th>価格帯</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   
@@ -28,6 +30,12 @@
         </td>
         <td>
           <%= restaurant.min_price %>〜<%= restaurant.max_price %>円
+        </td>
+        <td>
+          <%= link_to '編集', edit_admin_restaurant_path(restaurant), class: "btn btn-primary", data: { "turbolinks" => false } %>
+        </td>
+        <td>
+          <%= link_to '削除', admin_restaurant_path(restaurant), method: :delete, data: { confirm: '本当に削除しますか？' } %>
         </td>
       </tr>
     <% end %>
