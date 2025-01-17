@@ -32,6 +32,20 @@ class DeviseCreateRestaurants < ActiveRecord::Migration[6.1]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
+      # 店舗情報の保存
+      t.integer :genre_id, null: false
+      t.integer :coupon_id, null: false
+      t.string :name, null: false
+      t.string :postal_code, null: false
+      t.string :address, null: false
+      t.string :contact_number, null: false
+      t.string :business_open_hours, null: false
+      t.string :business_close_hours, null: false
+      t.integer :min_price, null: false
+      t.integer :max_price, null: false
+      t.integer :capacity, null: false
+      t.boolean :parking_lot, default: true, null: false
+      t.integer :parking_spaces, null: false
 
       t.timestamps null: false
     end

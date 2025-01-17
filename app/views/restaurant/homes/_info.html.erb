@@ -1,0 +1,51 @@
+<table class="table">
+
+  <tr>
+    <th>店舗名</th>
+    <td><%= @restaurant.name %></td>
+  </tr>
+  <tr>
+    <th>ジャンル</th>
+    <td><%= @restaurant.genre.name %></td>
+  </tr>
+  <tr>
+    <th>郵便番号</th>
+    <td><%= @restaurant.formatted_postal_code %></td>
+  </tr>
+  <tr>
+    <th>住所</th>
+    <td><%= @restaurant.address %></td>
+  </tr>
+  <tr>
+    <th>電話番号</th>
+    <td><%= @restaurant.contact_number %></td>
+  </tr>
+  <tr>
+    <th>営業時間</th>
+    <td><%= @restaurant.business_open_hours %>〜<%= @restaurant.business_close_hours %></td>
+  </tr>
+  <tr>
+    <th>価格帯</th>
+    <td><%= @restaurant.min_price %>〜<%= @restaurant.max_price %></td>
+  </tr>
+  <tr>
+    <th>収容人数</th>
+    <td><%= @restaurant.capacity %>人</td>
+  </tr>
+  <tr>
+    <th>駐車場</th>
+    <td>
+      <% if @restaurant.parking_lot == true %>
+        <p>有：<%= @restaurant.parking_spaces %>台</p>
+      <% else %>
+        <p>無</p>
+      <% end %>
+    </td>
+  </tr>
+
+</table>
+
+<% if restaurant == current_restaurant %>
+  <%= link_to "編集", edit_restaurant_owner_path(restaurant), class: "btn btn-primary", data: { "turbolinks" => false } %>
+  <%= link_to "退会", unsubscribe_restaurant_owners_path(current_restaurant), class: "btn btn-danger" %>
+<% end %>

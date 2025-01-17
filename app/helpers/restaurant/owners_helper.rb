@@ -1,0 +1,2 @@
+module Restaurant::OwnersHelper
+end
