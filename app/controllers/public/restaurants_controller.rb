@@ -5,5 +5,6 @@ class Public::RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
+    @reviews = @restaurant.reviews.order(created_at: :desc).limit(5)
   end
 end
