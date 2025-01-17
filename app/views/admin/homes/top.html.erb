@@ -1,0 +1,46 @@
+<h2>登録店舗一覧</h2>
+
+
+<table class="table">
+
+  <thead>
+    <tr>
+      <th>店舗名</th>
+      <th>住所</th>
+      <th>ジャンル</th>
+      <th>価格帯</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @restaurants.each do |restaurant| %>
+      <tr>
+        <td>
+          <%= restaurant.name %>
+        </td>
+        <td>
+          <%= restaurant.address %>
+        </td>
+        <td>
+          <%= restaurant.genre.name %>
+        </td>
+        <td>
+          <%= restaurant.min_price %>〜<%= restaurant.max_price %>円
+        </td>
+        <% if restaurant.is_active == true %>
+          <td class="text-success">有効</td>
+        <% else %>
+          <td class="text-secondary">退会済</td>
+        <% end %>
+        <td>
+          <%= link_to '編集', edit_admin_restaurant_path(restaurant), class: "btn btn-primary", data: { "turbolinks" => false } %>
+        </td>
+        <td>
+          <%= link_to '削除', admin_restaurant_path(restaurant), method: :delete, class: "btn btn-danger", data: { confirm: '本当に削除しますか？' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</div>

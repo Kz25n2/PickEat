@@ -1,0 +1,15 @@
+<% reviews.each do |review| %>
+  <div class="card">
+    <div class="card-body">
+      <%= link_to customer_path(review.customer), style: "color: #000; text-decoration: underline" do %>
+        <h5 class="card-title"><%= review.customer.nickname %></h5>
+      <% end %>
+      <p class="card-text"><%= review.body %></p>
+      <p class="text-secondary"><small><%= review.created_at.strftime("%Y-%m-%d") %></small></p>
+      <% if review.customer == current_customer %>
+        <%= link_to "編集", edit_restaurant_review_path(review.restaurant_id, review) %>
+        <%= link_to "削除", restaurant_review_path(review.restaurant_id, review), method: :delete, data: { confirm:  "本当に削除しますか？" } %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
