@@ -18,9 +18,7 @@
     <% @restaurants.each do |restaurant| %>
       <tr>
         <td>
-          <%= link_to admin_restaurant_path(restaurant), style:"color: #000; text-decoration: underline;" do  %>
-            <%= restaurant.name %>
-          <% end %>
+          <%= restaurant.name %>
         </td>
         <td>
           <%= restaurant.address %>
@@ -31,11 +29,16 @@
         <td>
           <%= restaurant.min_price %>〜<%= restaurant.max_price %>円
         </td>
+        <% if restaurant.is_active == true %>
+          <td class="text-success">有効</td>
+        <% else %>
+          <td class="text-secondary">退会済</td>
+        <% end %>
         <td>
           <%= link_to '編集', edit_admin_restaurant_path(restaurant), class: "btn btn-primary", data: { "turbolinks" => false } %>
         </td>
         <td>
-          <%= link_to '削除', admin_restaurant_path(restaurant), method: :delete, data: { confirm: '本当に削除しますか？' } %>
+          <%= link_to '削除', admin_restaurant_path(restaurant), method: :delete, class: "btn btn-danger", data: { confirm: '本当に削除しますか？' } %>
         </td>
       </tr>
     <% end %>

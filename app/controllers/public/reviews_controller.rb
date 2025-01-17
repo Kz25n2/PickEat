@@ -26,11 +26,27 @@ class Public::ReviewsController < ApplicationController
   end
 
   def edit
+    @review = Review.find(params[:id])
+  end
+
+  def update
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @review = Review.find(params[:id])
+    if @review.update(review_params)
+      flash[:notice] = "レビューを更新しました"
+      redirect_to restaurant_path(@restaurant)
+    else
+      flash.now[:alert] = "レビューの更新に失敗しました"
+      render :edit
+    end
   end
 
   def destroy
+    restaurant = Restaurant.find(params[:restaurant_id])
     review = Review.find(params[:id])
-    review.destroy(review_params)
+    review.destroy
+    flash[:notice] = "レビューを削除しました"
+    redirect_to restaurant_path(restaurant)
   end
 
   private

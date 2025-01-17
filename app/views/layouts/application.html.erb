@@ -17,28 +17,36 @@
 
   <body>
 
-    <header>
-      <%= link_to root_path do %>
-        <%= image_tag "logo.jpg", alt: PickEat, width: 200, height: 85 %>
-      <% end %>
-
-      <div class="nav">
-        <%= render 'layouts/header' %>
+    <header style="height: 100px; background-color: #f5f5f5;">
+      <div class="container h-100">
+        <div class="row align-items-center h-100">
+          <div class="col-md-3">
+            <%= link_to root_path do %>
+              <%= image_tag "logo.png", alt: PickEat, width: 200, height: 85 %>
+            <% end %>
+          </div>
+          <div class="col-md-9">
+            <%= render 'layouts/header' %>
+          </div>
+        </div>
       </div>
-
     </header>
 
-    <main>
-      <% flash.each do |message_type, message| %>
-        <div class="flash-message <%= message_type %>"><%= message %></div>
-      <% end %>
-      <div class="container">
+    <main style="height: 100vh;">
+      <div class="container mt-5">
+        <% flash.each do |message_type, message| %>
+          <div class="flash-message <%= message_type %>"><%= message %></div>
+        <% end %>
         <%= yield %>
       </div>
     </main>
 
-    <footer>
-
+    <footer style="height: 100px; background-color: #f5f5f5;" class="d-flex align-items-center">
+      <div class="container">
+        <div class="row justify-content-center">
+          <%= render 'layouts/footer' %>
+        </div>
+      </div>
     </footer>
 
   </body>

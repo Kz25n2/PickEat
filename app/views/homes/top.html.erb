@@ -1,5 +1,12 @@
-<h1>ようこそ、PickEatへ！</h1>
-<h3>このサイトは、飲食店選びに悩める人とピンポイント集客したい飲食店をつなげるレビューサイトです！</h3>
+<div class="row justify-content-center">
+  <h1>ようこそ、PickEatへ！</h1>
+  <h3 class="mt-3">
+    このサイトは、飲食店選びに悩める人と<br>
+    ピンポイント集客したい飲食店をつなげるレビューサイトです！
+  </h3>
+</div>
 
-<%= link_to "会員としてログインする", new_customer_session_path %>
-<%= link_to "店舗としてログインする", new_restaurant_session_path %>
+<div class="row justify-content-center mt-5">
+  <%= link_to "会員としてログインする", new_customer_session_path, class: "btn btn-success text-white mr-5" %>
+  <%= link_to "店舗としてログインする", new_restaurant_session_path, class: "btn btn-success text-white" %>
+</div>

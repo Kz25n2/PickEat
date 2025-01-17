@@ -32,7 +32,7 @@ class Admin::RestaurantsController < ApplicationController
 
     if @restaurant.update(restaurant_params)
       flash[:notice] = "更新に成功しました"
-      redirect_to admin_restaurant_path(@restaurant)
+      redirect_to admin_top_path
     else
       flash.now[:alert] = "更新に失敗しました"
       render :edit
@@ -62,7 +62,7 @@ class Admin::RestaurantsController < ApplicationController
       :max_price,
       :capacity,
       :parking_lot,
-      :parking_spaces
+      :parking_spaces,
       :is_active
     )
   end

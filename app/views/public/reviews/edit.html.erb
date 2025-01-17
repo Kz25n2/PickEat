@@ -1,2 +1,13 @@
-<h1>Public::Reviews#edit</h1>
-<p>Find me in app/views/public/reviews/edit.html.erb</p>
+<h2>レビュー編集</h2>
+
+<%= render 'layouts/errors', obj: @review %>
+
+<%= form_with model: @review, url: restaurant_review_path(@review.restaurant_id, @review), method: :patch, local: true do |f| %>
+  <div class="field">
+    <%= f.label :body, "レビュー" %>
+    <%= f.text_area :body, placeholder: "ここにレビューを記載してください", class: "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "更新", class: "btn btn-primary" %>
+  </div>
+<% end %>
