@@ -55,4 +55,4 @@ if Rails.env.production?
   )
   # デーモン
   daemonize
-endgit add Gemfile Gemfile.lock config/puma.rb config/database.yml .gitignore
+end
