@@ -13,6 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://kit.fontawesome.com/cf1df73f36.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -32,16 +33,36 @@
       </div>
     </header>
 
-    <main style="height: 100vh;">
+    <main>
       <div class="container mt-5">
-        <% flash.each do |message_type, message| %>
-          <div class="flash-message <%= message_type %>"><%= message %></div>
-        <% end %>
-        <%= yield %>
+        <div class="row">
+
+          <%= render 'public/searches/search_form' %>
+
+          <% flash.each do |message_type, message| %>
+            <div class="flash-message <%= message_type %>"><%= message %></div>
+          <% end %>
+        </div>
+          
+        <div class="row h-100">
+          <% if customer_signed_in? %>
+            <div class="col-md-2">
+              <%= render 'public/searches/genre_index', genres: Genre.all %>
+            </div>
+            <div class="col-md-9 offset-1">
+              <%= yield %>
+            </div>
+          <% else %>
+            <div class="col-md-12">
+              <%= yield %>
+            </div>
+          <% end %>
+        </div>
+
       </div>
     </main>
 
-    <footer style="height: 100px; background-color: #f5f5f5;" class="d-flex align-items-center">
+    <footer style="height: 100px; background-color: #f5f5f5;" class="d-flex align-items-center mt-auto">
       <div class="container">
         <div class="row justify-content-center">
           <%= render 'layouts/footer' %>

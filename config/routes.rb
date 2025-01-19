@@ -53,7 +53,8 @@ Rails.application.routes.draw do
       patch 'customers/withdrawal'
       get 'customers/unsubscribe'
     end
-    get 'searches/search'
+    get 'genre_search', to: 'searches#genre_search', as: 'genre_search'
+    get 'keyword_search', to: 'searches#keyword_search', as: 'keyword_search'
   end
   
   get 'homes/top'
