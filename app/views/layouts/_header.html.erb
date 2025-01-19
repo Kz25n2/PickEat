@@ -1,9 +1,15 @@
 <ul class="navbar-nav ml-auto d-flex flex-row mt-auto justify-content-end">
 
   <% if customer_signed_in? %>
+  <!-- カスタマーログイン時 -->
     <li class="nav-item mr-3">
       <%= link_to restaurants_path, class: "nav-link text-dark border border-dark p-1", style: "border-radius: 3px;" do %>
         <span>店舗一覧</span>
+      <% end %>
+    </li>
+    <li class="nav-item mr-3">
+      <%= link_to promotions_path, class: "nav-link text-dark border border-dark p-1", style: "border-radius: 3px;" do %>
+        <span>集客中の店舗</span>
       <% end %>
     </li>
     <li class="nav-item mr-3">
@@ -17,6 +23,7 @@
       <% end %>
     </li>
   <% elsif admin_signed_in? %>
+  <!-- 管理者ログイン時 -->
     <li class="nav-item mr-3">
       <%= link_to admin_top_path, class: "nav-link text-dark border border-dark p-1", style: "border-radius: 3px;" do %>
         <span>店舗一覧</span>
@@ -43,13 +50,14 @@
       <% end %>
     </li>
   <% elsif restaurant_signed_in? %>
+  <!-- 店舗ログイン時 -->
     <li class="nav-item mr-3">
       <%= link_to restaurant_top_path, class: "nav-link text-dark border border-dark p-1", style: "border-radius: 3px;" do %>
         <span>店舗情報</span>
       <% end %>
     </li>
     <li class="nav-item mr-3">
-      <%= link_to new_restaurant_promotion_path, class: "nav-link text-dark border border-dark p-1", style: "border-radius: 3px;" do %>
+      <%= link_to promotion_restaurant_promotions_path, class: "nav-link text-dark border border-dark p-1", style: "border-radius: 3px;" do %>
         <span>集客する</span>
       <% end %>
     </li>

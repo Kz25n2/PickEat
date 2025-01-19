@@ -1,0 +1,19 @@
+<h2>集客アクションを起こす</h2>
+
+<%= render "layouts/errors", obj: @promotion %>
+
+<%= form_with model: @promotion, url: restaurant_promotions_path(@promotion), method: :post do |f| %>
+  <%= f.label :name, "タイトル" %>
+  <%= f.text_field :name, placeholder: "タイトルを入力してください" %>
+  <%= f.label :body, "内容" %>
+  <%= f.text_area :body, placeholder: "内容を入力してください" %>
+  <%= f.submit "作成", class: "btn btn-primary", data: { confirm: "この内容でアクションを起こします" } %>
+<% end %>
+
+<h4>発信中のアクション</h4>
+<div class="card">
+  <% @promotions.each do |promotion| %>
+    <h5><strong><%= promotion.name %></strong></h5>
+    <p><%= promotion.body %></p>
+  <% end %>
+</div>

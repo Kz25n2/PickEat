@@ -17,7 +17,11 @@ Rails.application.routes.draw do
   }
 
   namespace :restaurant do
-    resources :promotions, only: [:new, :create]
+    resources :promotions, only: [:create] do
+      collection do
+        get :promotion
+      end
+    end
     resources :coupons, only: [:index, :show, :create, :update, :destroy]
     resources :comments, only: [:index, :edit, :create, :update, :destroy]
     resources :owners, only: [:edit, :update] do
@@ -40,8 +44,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    get 'comments/index'
-    get 'comments/edit'
+    resources :promotions, only: [:index]
     resources :restaurants, only: [:index, :show] do
       resources :reviews, only: [:index, :new, :edit, :create, :update, :destroy]
     end
