@@ -1,6 +1,6 @@
-<div class="search" style="text-align: right; padding-right: 30px;">
+<div class="search" style="padding-right: 15px;">
   <%= form_with url: keyword_search_path, method: :get, local: true do |f| %>
-    <%= f.text_field :keyword, placeholder: "キーワードを入力" %>
+    <%= f.text_field :keyword, placeholder: "キーワードで検索" %>
     <%= button_tag(type: 'submit') do %>
       <i class="fa-solid fa-magnifying-glass"></i>
     <% end %>
