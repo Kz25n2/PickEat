@@ -1,19 +1,53 @@
 <h2>集客アクションを起こす</h2>
+<ul class="list-group list-group-flush ml-5 w-75">
+  <li class="list-group-item">ここではピンポイントで集客をしたいタイミングでアクションを起こすことができます。</li>
+  <li class="list-group-item">タイトルと内容をどちらも入力して作成ボタンを押してください。</li>
+  <li class="list-group-item">アクションは2時間経過すると自動で削除されます</li>
+  <li class="list-group-item">集客アクションは一件のみ作成できます。</li>
+  <li class="list-group-item">新しいアクションを作成したい場合は、現在のアクションを削除してください。</li>
+  <li class="list-group-item">アクションを起こすと集客中のお店一覧にあなたの店舗が表示されます。</li>
+</ul>
 
 <%= render "layouts/errors", obj: @promotion %>
 
 <%= form_with model: @promotion, url: restaurant_promotions_path(@promotion), method: :post do |f| %>
-  <%= f.label :name, "タイトル" %>
-  <%= f.text_field :name, placeholder: "タイトルを入力してください" %>
-  <%= f.label :body, "内容" %>
-  <%= f.text_area :body, placeholder: "内容を入力してください" %>
-  <%= f.submit "作成", class: "btn btn-primary", data: { confirm: "この内容でアクションを起こします" } %>
+  <div class="form-group row mt-3 pl-3">
+    <%= f.label :name, "タイトル", class: "col-12 col-md-1 mt-3" %>
+    <div class="col-12 col-md-5">
+      <%= f.text_field :name, placeholder: "タイトルを入力してください", class: "form-control mt-1" %>
+    </div>
+  </div>
+  <div class="form-group row mt-3 pl-3">
+    <%= f.label :body, "内容", class: "col-12 col-md-1 col-form-label mt-3" %>
+    <div class="col-12 col-md-5">
+      <%= f.text_area :body, placeholder: "内容を入力してください", class: "form-control mt-1", rows: 5 %>
+    </div>
+  </div>
+  <%= f.submit "作成", class: "btn btn-primary mt-3 w-md-auto ml-3", data: { confirm: "この内容でアクションを起こします" } %>
 <% end %>
 
-<h4>発信中のアクション</h4>
-<div class="card">
-  <% @promotions.each do |promotion| %>
-    <h5><strong><%= promotion.name %></strong></h5>
-    <p><%= promotion.body %></p>
-  <% end %>
-</div>
+<h4 class="mt-4">発信中のアクション</h4>
+<% if @promotions.exists? %>
+  <div class="w-75">
+    <table class="table">
+      <thead class="thead-light">
+        <th>タイトル</th>
+        <th>内容</th>
+        <th>作成日時</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <% @promotions.each do |promotion| %>
+          <tr>
+            <td class="w-25"><strong><%= promotion.name %></strong></td>
+            <td class="w-25"><%= promotion.body %></td>
+            <td class="w-25"><%= l promotion.created_at, format: :long %></td>
+            <td class="w-25"><%= link_to "削除", restaurant_promotion_path(promotion), method: :delete, class: "btn btn-danger" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <p class="text-secondary">現在発信中のアクションはありません</p>
+<% end %>

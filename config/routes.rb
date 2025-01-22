@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   }
 
   namespace :restaurant do
-    resources :promotions, only: [:create] do
+    resources :promotions, only: [:create, :destroy] do
       collection do
         get :promotion
       end

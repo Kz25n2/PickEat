@@ -1,5 +1,5 @@
 class Public::PromotionsController < ApplicationController
   def index
-    @promotions = Promotion.all
+    @promotions = Promotion.active
   end
 end

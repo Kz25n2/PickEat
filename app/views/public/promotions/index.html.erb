@@ -1,14 +1,17 @@
 <h2>集客アクションを起こしている店舗</h2>
 
 <% @promotions.each do |promotion| %>
-  <div class="card">
+  <div class="card mb-3 p-3">
     <%= link_to restaurant_path(promotion.restaurant), style:"color: #000; text-decoration: underline;" do  %>
       <h4>店舗名：<%= promotion.restaurant.name %></h4>
     <% end %>
     <p>住所：<%= promotion.restaurant.address %></p>
     <p>ジャンル：<%= promotion.restaurant.genre.name %></p>
     <p>価格帯：<%= promotion.restaurant.min_price %>〜<%= promotion.restaurant.max_price %>円</p>
-    <p class="text-danger"><strong>アクション：<%= promotion.name %></strong></p>
+    <p>
+      <strong>アクション：<%= promotion.name %></strong>
+      <span class="text-secondary ml-3"><%= time_ago_in_words(promotion.created_at) %>前</span>
+    </p>
     <p>内容：<%= promotion.body %></p>
   </div>
 <% end %>
