@@ -1,14 +1,28 @@
 <% reviews.each do |review| %>
-  <div class="card">
+  <div class="card w-75 mt-3">
     <div class="card-body">
-      <%= link_to customer_path(review.customer), style: "color: #000; text-decoration: underline" do %>
-        <h5 class="card-title"><%= review.customer.nickname %></h5>
-      <% end %>
-      <p class="card-text"><%= review.body %></p>
+      <div class="d-flex">
+        <%= link_to customer_path(review.customer), style: "color: #000; text-decoration: underline" do %>
+          <h5 class="card-title mb-0"><%= review.customer.nickname %></h5>
+        <% end %>
+        <% if review.customer == current_customer %>
+            <span class="text-secondary"><small>（自分のレビュー）</small></span>
+        <% end %>
+      </div>
       <p class="text-secondary"><small><%= review.created_at.strftime("%Y-%m-%d") %></small></p>
+      <p class="card-text"><%= review.body.truncate(100) %></p>
+      <p>
+        レビュー店舗：
+        <%= link_to restaurant_path(review.restaurant_id), style:"color: #000; text-decoration: underline;" do %>
+          <%= review.restaurant.name %>
+        <% end %>
+      </p>
+      <%= link_to "レビュー詳細", restaurant_review_path(review.restaurant_id, review), class:"mr-2" %>
       <% if review.customer == current_customer %>
-        <%= link_to "編集", edit_restaurant_review_path(review.restaurant_id, review) %>
-        <%= link_to "削除", restaurant_review_path(review.restaurant_id, review), method: :delete, data: { confirm:  "本当に削除しますか？" } %>
+        <span class="text-secondary">|</span>
+        <%= link_to "編集", edit_restaurant_review_path(review.restaurant_id, review), class:"mx-2" %>
+        <span class="text-secondary">|</span>
+        <%= link_to "削除", restaurant_review_path(review.restaurant_id, review), method: :delete, data: { confirm:  "本当に削除しますか？" }, class:"ml-2" %>
       <% end %>
     </div>
   </div>

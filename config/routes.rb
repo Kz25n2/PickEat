@@ -46,9 +46,11 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :promotions, only: [:index]
     resources :restaurants, only: [:index, :show] do
-      resources :reviews, only: [:index, :new, :edit, :create, :update, :destroy]
+      resources :reviews, only: [:index, :new, :show, :edit, :create, :update, :destroy] do
+        resources :comments, only: [:edit, :create, :update, :destroy]
+        resource :favorites, only: [:create, :destroy]
+      end
     end
-    resources :comments, only: [:index, :edit, :create, :update, :destroy]
     resources :customers, only: [:show, :edit, :update] do
       patch 'customers/withdrawal'
       get 'customers/unsubscribe'
