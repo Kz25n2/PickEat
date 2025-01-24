@@ -17,13 +17,17 @@
           <%= review.restaurant.name %>
         <% end %>
       </p>
-      <%= link_to "レビュー詳細", restaurant_review_path(review.restaurant_id, review), class:"mr-2" %>
-      <% if review.customer == current_customer %>
-        <span class="text-secondary">|</span>
-        <%= link_to "編集", edit_restaurant_review_path(review.restaurant_id, review), class:"mx-2" %>
-        <span class="text-secondary">|</span>
-        <%= link_to "削除", restaurant_review_path(review.restaurant_id, review), method: :delete, data: { confirm:  "本当に削除しますか？" }, class:"ml-2" %>
-      <% end %>
+      <div class="d-flex">
+        <%= link_to "レビュー詳細", restaurant_review_path(review.restaurant_id, review), class:"mr-2", style: "color: #000; text-decoration: underline" %>
+        <span class="text-secondary mx-2">|</span>
+        <%= render 'public/favorites/button', review: review %>
+        <% if review.customer == current_customer %>
+          <span class="text-secondary mx-2">|</span>
+          <%= link_to "編集", edit_restaurant_review_path(review.restaurant_id, review), style: "color: #000; text-decoration: underline" %>
+          <span class="text-secondary mx-2">|</span>
+          <%= link_to "削除", restaurant_review_path(review.restaurant_id, review), method: :delete, data: { confirm:  "本当に削除しますか？" }, style: "color: #000; text-decoration: underline" %>
+        <% end %>
+      </div>
     </div>
   </div>
 <% end %>
