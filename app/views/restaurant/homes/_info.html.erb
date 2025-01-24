@@ -1,51 +1,77 @@
-<table class="table">
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <div class="card shadow mb-4">
 
-  <tr>
-    <th>店舗名</th>
-    <td><%= @restaurant.name %></td>
-  </tr>
-  <tr>
-    <th>ジャンル</th>
-    <td><%= @restaurant.genre.name %></td>
-  </tr>
-  <tr>
-    <th>郵便番号</th>
-    <td><%= @restaurant.formatted_postal_code %></td>
-  </tr>
-  <tr>
-    <th>住所</th>
-    <td><%= @restaurant.address %></td>
-  </tr>
-  <tr>
-    <th>電話番号</th>
-    <td><%= @restaurant.contact_number %></td>
-  </tr>
-  <tr>
-    <th>営業時間</th>
-    <td><%= @restaurant.business_open_hours %>〜<%= @restaurant.business_close_hours %></td>
-  </tr>
-  <tr>
-    <th>価格帯</th>
-    <td><%= @restaurant.min_price %>〜<%= @restaurant.max_price %></td>
-  </tr>
-  <tr>
-    <th>収容人数</th>
-    <td><%= @restaurant.capacity %>人</td>
-  </tr>
-  <tr>
-    <th>駐車場</th>
-    <td>
-      <% if @restaurant.parking_lot == true %>
-        <p>有：<%= @restaurant.parking_spaces %>台</p>
-      <% else %>
-        <p>無</p>
-      <% end %>
-    </td>
-  </tr>
+        <div class="card-header bg-light">
+          <h4 class="mb-0">マイページ</h4>
+        </div>
 
-</table>
+        <div class="card-body">
+          <table class="table">
+            <tbody>
+              <tr>
+                <th class="bg-light w-25">店舗名</th>
+                <td><%= @restaurant.name %></td>
+              </tr>
+              <tr>
+                <th class="bg-light">ジャンル</th>
+                <td><%= @restaurant.genre.name %></td>
+              </tr>
+              <tr>
+                <th class="bg-light">郵便番号</th>
+                <td><%= @restaurant.formatted_postal_code %></td>
+              </tr>
+              <tr>
+                <th class="bg-light">住所</th>
+                <td><%= @restaurant.address %></td>
+              </tr>
+              <tr>
+                <th class="bg-light">電話番号</th>
+                <td><%= @restaurant.contact_number %></td>
+              </tr>
+              <tr>
+                <th class="bg-light">営業時間</th>
+                <td><%= @restaurant.business_open_hours %>〜<%= @restaurant.business_close_hours %></td>
+              </tr>
+              <tr>
+                <th class="bg-light">価格帯</th>
+                <td><%= @restaurant.min_price %>〜<%= @restaurant.max_price %></td>
+              </tr>
+              <tr>
+                <th class="bg-light">収容人数</th>
+                <td><%= @restaurant.capacity %>人</td>
+              </tr>
+              <tr>
+                <th class="bg-light">駐車場</th>
+                <td>
+                  <% if @restaurant.parking_lot == true %>
+                    <span class="text-success">有</span>
+                    ：<%= @restaurant.parking_spaces %>台
+                  <% else %>
+                    <span class="text-secondary">無</span>
+                  <% end %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-<% if restaurant == current_restaurant %>
-  <%= link_to "編集", edit_restaurant_owner_path(restaurant), class: "btn btn-primary", data: { "turbolinks" => false } %>
-  <%= link_to "退会", unsubscribe_restaurant_owners_path(current_restaurant), class: "btn btn-danger" %>
-<% end %>
+        <% if restaurant == current_restaurant %>
+      <div class="my-4 d-flex gap-2 justify-content-center">
+        <%= link_to edit_restaurant_owner_path(restaurant), 
+            class: "btn btn-primary",
+            data: { "turbolinks" => false } do %>
+          <i class="fas fa-edit"></i> 編集
+        <% end %>
+        
+        <%= link_to unsubscribe_restaurant_owners_path(current_restaurant), 
+            class: "btn btn-outline-danger" do %>
+          <i class="fas fa-user-times"></i> 退会
+        <% end %>
+      </div>
+    <% end %>
+
+    </div>
+  </div>
+</div>
