@@ -1,4 +1,4 @@
-<div id="favorite-button-<%= review.id %>">
+<div id="favorite-button-<%= review.id %>" class="mb-md-0 mb-2">
   <span>参考になった</span>
   <% if review.favorited_by?(current_customer) %>
     <%= link_to restaurant_review_favorites_path(review.restaurant_id, review), method: :delete, remote: true, data: {"turbolinks" => false}, style: "color: #000; text-decoration: none" do %>
