@@ -1,4 +1,6 @@
 class Restaurant::PromotionsController < ApplicationController
+  before_action :authenticate_restaurant!
+  
   def promotion
     @promotion = Promotion.new
     @promotions = current_restaurant.promotions.active

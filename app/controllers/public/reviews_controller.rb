@@ -1,4 +1,5 @@
 class Public::ReviewsController < ApplicationController
+  before_action :authenticate_customer!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_restaurant
 
   def index

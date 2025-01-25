@@ -1,4 +1,6 @@
 class Restaurant::OwnersController < ApplicationController
+  before_action :authenticate_restaurant!
+  
   def edit
     @owner = current_restaurant
   end
