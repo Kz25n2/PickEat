@@ -6,10 +6,10 @@ class Restaurant::OwnersController < ApplicationController
   def update
     @owner = current_restaurant
     if @owner.update(restaurant_params)
-      flash[:notice] = "店舗情報を更新しました"
+      flash[:notice] = "店舗情報を更新しました。"
       redirect_to restaurant_top_path
     else
-      flash.now[:alert] = "店舗情報の更新に失敗しました"
+      flash.now[:alert] = "店舗情報の更新に失敗しました。"
       render :edit
     end
   end
@@ -22,7 +22,7 @@ class Restaurant::OwnersController < ApplicationController
     @owner = current_restaurant
     @owner.update(is_active: false)
     reset_session
-    flash[:notice] = "退会処理が完了しました"
+    flash[:notice] = "退会処理が完了しました。"
     redirect_to root_path
   end
 

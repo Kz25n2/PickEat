@@ -1,79 +1,91 @@
-<ul class="navbar-nav ml-auto d-flex flex-row mt-auto justify-content-end">
+<div class="collapse navbar-collapse" id="navbarNav">
 
-  <% if customer_signed_in? %>
-    <li class="nav-item mr-3">
-      <%= link_to restaurants_path, class: "nav-link text-dark border border-dark p-1", style: "border-radius: 3px;" do %>
-        <span>店舗一覧</span>
-      <% end %>
-    </li>
-    <li class="nav-item mr-3">
-      <%= link_to customer_path(current_customer), class: "nav-link text-dark border border-dark p-1", style: "border-radius: 3px;" do %>
-        <span>マイページ</span>
-      <% end %>
-    </li>
-    <li class="nav-item mr-3">
-      <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-dark border border-dark p-1", style: "border-radius: 3px;" do %>
-        <span>ログアウト</span>
-      <% end %>
-    </li>
-  <% elsif admin_signed_in? %>
-    <li class="nav-item mr-3">
-      <%= link_to admin_top_path, class: "nav-link text-dark border border-dark p-1", style: "border-radius: 3px;" do %>
-        <span>店舗一覧</span>
-      <% end %>
-    </li>
-    <li class="nav-item mr-3">
-      <%= link_to admin_customers_path, class: "nav-link text-dark border border-dark p-1", style: "border-radius: 3px;" do %>
-        <span>会員一覧</span>
-      <% end %>
-    </li>
-    <li class="nav-item mr-3">
-      <%= link_to admin_reviews_path, class: "nav-link text-dark border border-dark p-1", style: "border-radius: 3px;" do %>
-        <span>レビュー一覧</span>
-      <% end %>
-    </li>
-    <li class="nav-item mr-3">
-      <%= link_to admin_genres_path, class: "nav-link text-dark border border-dark p-1", style: "border-radius: 3px;" do %>
-        <span>ジャンル一覧</span>
-      <% end %>
-    </li>
-    <li class="nav-item mr-3">
-      <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-dark border border-dark p-1", style: "border-radius: 3px;" do %>
-        <span>ログアウト</span>
-      <% end %>
-    </li>
-  <% elsif restaurant_signed_in? %>
-    <li class="nav-item mr-3">
-      <%= link_to restaurant_top_path, class: "nav-link text-dark border border-dark p-1", style: "border-radius: 3px;" do %>
-        <span>店舗情報</span>
-      <% end %>
-    </li>
-    <li class="nav-item mr-3">
-      <%= link_to new_restaurant_promotion_path, class: "nav-link text-dark border border-dark p-1", style: "border-radius: 3px;" do %>
-        <span>集客する</span>
-      <% end %>
-    </li>
-    <li class="nav-item mr-3">
-      <%= link_to destroy_restaurant_session_path, method: :delete, class: "nav-link text-dark border border-dark p-1", style: "border-radius: 3px;" do %>
-        <span>ログアウト</span>
-      <% end %>
-    </li>
-  <% else %>
-    <li class="nav-item mr-3">
-      <%= link_to restaurants_path, class: "nav-link text-dark border border-dark p-1", style: "border-radius: 3px;" do %>
-        <span>店舗一覧</span>
-      <% end %>
-    </li>
-    <li class="nav-item mr-3">
-      <%= link_to new_customer_session_path, class: "nav-link text-dark border border-dark p-1", style: "border-radius: 3px;" do %>
-        <span>ログイン</span>
-      <% end %>
-    </li>
-    <li class="nav-item mr-3">
-      <%= link_to new_customer_registration_path, class: "nav-link text-dark border border-dark p-1", style: "border-radius: 3px;" do %>
-        <span>新規登録</span>
-      <% end %>
-    </li>
-  <% end %>
+  <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
 
-</ul>
+    <% if customer_signed_in? %>
+    <!-- カスタマーログイン時 -->
+      <li class="nav-item mx-1 my-1">
+        <%= link_to restaurants_path, class: "nav-link text-dark p-1", style: "border: 1px solid #000 border-radius: 3px;" do %>
+          <span>店舗一覧</span>
+        <% end %>
+      </li>
+      <li class="nav-item mx-1 my-1">
+        <%= link_to promotions_path, class: "nav-link text-dark  p-1", style: "border: 1px solid #000 border-radius: 3px;" do %>
+          <span>集客中の店舗</span>
+        <% end %>
+      </li>
+      <li class="nav-item mx-1 my-1">
+        <%= link_to customer_path(current_customer), class: "nav-link text-dark  p-1", style: "border: 1px solid #000 border-radius: 3px;" do %>
+          <span>マイページ</span>
+        <% end %>
+      </li>
+      <li class="nav-item mx-1 my-1">
+        <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-dark  p-1", style: "border: 1px solid #000 border-radius: 3px;" do %>
+          <span>ログアウト</span>
+        <% end %>
+      </li>
+    <% elsif admin_signed_in? %>
+    <!-- 管理者ログイン時 -->
+      <li class="nav-item mx-1 my-1">
+        <%= link_to admin_top_path, class: "nav-link text-dark  p-1", style: "border: 1px solid #000 border-radius: 3px;" do %>
+          <span>店舗一覧</span>
+        <% end %>
+      </li>
+      <li class="nav-item mx-1 my-1">
+        <%= link_to admin_customers_path, class: "nav-link text-dark  p-1", style: "border: 1px solid #000 border-radius: 3px;" do %>
+          <span>会員一覧</span>
+        <% end %>
+      </li>
+      <li class="nav-item mx-1 my-1">
+        <%= link_to admin_reviews_path, class: "nav-link text-dark  p-1", style: "border: 1px solid #000 border-radius: 3px;" do %>
+          <span>レビュー一覧</span>
+        <% end %>
+      </li>
+      <li class="nav-item mx-1 my-1">
+        <%= link_to admin_genres_path, class: "nav-link text-dark  p-1", style: "border: 1px solid #000 border-radius: 3px;" do %>
+          <span>ジャンル一覧</span>
+        <% end %>
+      </li>
+      <li class="nav-item mx-1 my-1">
+        <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-dark  p-1", style: "border: 1px solid #000 border-radius: 3px;" do %>
+          <span>ログアウト</span>
+        <% end %>
+      </li>
+    <% elsif restaurant_signed_in? %>
+    <!-- 店舗ログイン時 -->
+      <li class="nav-item mx-1 my-1">
+        <%= link_to restaurant_top_path, class: "nav-link text-dark p-1", style: "border: 1px solid #000 border-radius: 3px;" do %>
+          <span>店舗情報</span>
+        <% end %>
+      </li>
+      <li class="nav-item mx-1 my-1">
+        <%= link_to promotion_restaurant_promotions_path, class: "nav-link text-dark  p-1", style: "border: 1px solid #000 border-radius: 3px;" do %>
+          <span>集客する</span>
+        <% end %>
+      </li>
+      <li class="nav-item mx-1 my-1">
+        <%= link_to destroy_restaurant_session_path, method: :delete, class: "nav-link text-dark  p-1", style: "border: 1px solid #000 border-radius: 3px;" do %>
+          <span>ログアウト</span>
+        <% end %>
+      </li>
+    <% else %>
+      <li class="nav-item mx-1 my-1">
+        <%= link_to restaurants_path, class: "nav-link text-dark  p-1", style: "border: 1px solid #000 border-radius: 3px;" do %>
+          <span>店舗一覧</span>
+        <% end %>
+      </li>
+      <li class="nav-item mx-1 my-1">
+        <%= link_to new_customer_session_path, class: "nav-link text-dark  p-1", style: "border: 1px solid #000 border-radius: 3px;" do %>
+          <span>ログイン</span>
+        <% end %>
+      </li>
+      <li class="nav-item mx-1 my-1">
+        <%= link_to new_customer_registration_path, class: "nav-link text-dark  p-1", style: "border: 1px solid #000 border-radius: 3px;" do %>
+          <span>新規登録</span>
+        <% end %>
+      </li>
+    <% end %>
+
+  </ul>
+
+</div>

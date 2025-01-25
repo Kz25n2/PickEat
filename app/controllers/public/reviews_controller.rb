@@ -1,26 +1,30 @@
 class Public::ReviewsController < ApplicationController
+  before_action :set_restaurant
+
   def index
-    @reviews = Review.all
+    @reviews = Review.where(restaurant_id: @restaurant.id)
   end
 
   def show
-    @review = Review.find(params[:id])
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @review = @restaurant.reviews.find(params[:id])
+    @comments = @review.comments.includes(:customer)
+    @comment = @review.comments.new
   end
 
   def new
-    @restaurant = Restaurant.find(params[:restaurant_id])
     @review = Review.new
   end
 
   def create
-    @restaurant = Restaurant.find(params[:restaurant_id])
-    @review = @restaurant.reviews.build(review_params)
-    @review.customer_id = current_customer.id
+    @review = @restaurant.reviews.new(review_params)
+    @review.customer = current_customer
+    
     if @review.save
-      flash[:notice] = "レビューを投稿しました"
+      flash[:notice] = "レビューを投稿しました。"
       redirect_to restaurant_path(@restaurant)
     else
-      flash.now[:alert] = "レビューの投稿に失敗しました"
+      flash.now[:alert] = "レビューの投稿に失敗しました。"
       render :new
     end
   end
@@ -30,13 +34,12 @@ class Public::ReviewsController < ApplicationController
   end
 
   def update
-    @restaurant = Restaurant.find(params[:restaurant_id])
     @review = Review.find(params[:id])
     if @review.update(review_params)
-      flash[:notice] = "レビューを更新しました"
+      flash[:notice] = "レビューを更新しました。"
       redirect_to restaurant_path(@restaurant)
     else
-      flash.now[:alert] = "レビューの更新に失敗しました"
+      flash.now[:alert] = "レビューの更新に失敗しました。"
       render :edit
     end
   end
@@ -45,11 +48,15 @@ class Public::ReviewsController < ApplicationController
     restaurant = Restaurant.find(params[:restaurant_id])
     review = Review.find(params[:id])
     review.destroy
-    flash[:notice] = "レビューを削除しました"
+    flash[:notice] = "レビューを削除しました。"
     redirect_to restaurant_path(restaurant)
   end
 
   private
+
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:restaurant_id])
+  end
 
   def review_params
     params.require(:review).permit(:body)

@@ -7,4 +7,9 @@ class Review < ApplicationRecord
 
   validates :body, presence: true
 
+  def favorited_by?(customer)
+    return  false if customer.nil?
+    favorites.exists?(customer_id: customer.id)
+  end
+
 end

@@ -1,0 +1,8 @@
+<h2><%= @genre.name %>のお店</h2>
+<p>(全<%= @restaurants.count %>件)</p>
+
+<% if @restaurants.present? %>
+  <%= render 'public/restaurants/index', restaurants: @restaurants %>
+<% else %>
+  <p>該当するお店はありません</p>
+<% end %>
