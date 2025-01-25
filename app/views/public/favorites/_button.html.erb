@@ -1,0 +1,14 @@
+<div id="favorite-button-<%= review.id %>">
+  <span>参考になった</span>
+  <% if review.favorited_by?(current_customer) %>
+    <%= link_to restaurant_review_favorites_path(review.restaurant_id, review), method: :delete, remote: true, data: {"turbolinks" => false}, style: "color: #000; text-decoration: none" do %>
+      <i class="fa-solid fa-thumbs-up"></i>
+      <span>(<%= review.favorites.count %>)</span>
+    <% end %>
+  <% else %>
+    <%= link_to restaurant_review_favorites_path(review.restaurant_id, review), method: :post, remote: true, data: {"turbolinks" => false}, style: "color: #000; text-decoration: none" do %>
+      <i class="fa-regular fa-thumbs-up"></i>
+      <span>(<%= review.favorites.count %>)</span>
+    <% end %>
+  <% end %>
+</div>

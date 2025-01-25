@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+@import "custom";
+@import "flash-message";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+

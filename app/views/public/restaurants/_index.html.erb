@@ -1,5 +1,5 @@
 <% restaurants.each do |restaurant| %>
-  <div class="card">
+  <div class="card mb-3 p-3">
     <%= link_to restaurant_path(restaurant), style:"color: #000; text-decoration: underline;" do  %>
       <h4>店舗名：<%= restaurant.name %></h4>
     <% end %>

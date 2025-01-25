@@ -17,7 +17,11 @@ Rails.application.routes.draw do
   }
 
   namespace :restaurant do
-    resources :promotions, only: [:new, :create]
+    resources :promotions, only: [:create, :destroy] do
+      collection do
+        get :promotion
+      end
+    end
     resources :coupons, only: [:index, :show, :create, :update, :destroy]
     resources :comments, only: [:index, :edit, :create, :update, :destroy]
     resources :owners, only: [:edit, :update] do
@@ -40,17 +44,19 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    get 'comments/index'
-    get 'comments/edit'
+    resources :promotions, only: [:index]
     resources :restaurants, only: [:index, :show] do
-      resources :reviews, only: [:index, :new, :edit, :create, :update, :destroy]
+      resources :reviews, only: [:index, :new, :show, :edit, :create, :update, :destroy] do
+        resources :comments, only: [:edit, :create, :update, :destroy]
+        resource :favorites, only: [:create, :destroy]
+      end
     end
-    resources :comments, only: [:index, :edit, :create, :update, :destroy]
     resources :customers, only: [:show, :edit, :update] do
       patch 'customers/withdrawal'
       get 'customers/unsubscribe'
     end
-    get 'searches/search'
+    get 'genre_search', to: 'searches#genre_search', as: 'genre_search'
+    get 'keyword_search', to: 'searches#keyword_search', as: 'keyword_search'
   end
   
   get 'homes/top'

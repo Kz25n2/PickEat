@@ -1,0 +1,86 @@
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <%# プロモーション作成カード %>
+      <div class="card shadow mb-4">
+        <div class="card-header bg-light">
+          <h4 class="mb-0">集客アクションを起こす</h4>
+        </div>
+        <div class="card-body p-4">
+          <%= render "layouts/errors", obj: @promotion %>
+
+          <%= form_with model: @promotion, url: restaurant_promotions_path(@promotion), method: :post do |f| %>
+            <div class="mb-3">
+              <%= f.label :name, "タイトル", class: "form-label fw-bold" %>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="fas fa-heading"></i>
+                </span>
+                <%= f.text_field :name, placeholder: "例：ランチタイム限定20%オフ！", class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <%= f.label :body, "内容", class: "form-label fw-bold" %>
+              <div class="input-group">
+                <span class="input-group-text">
+                  <i class="fas fa-pen"></i>
+                </span>
+                <%= f.text_area :body, placeholder: "お客様へのメッセージを入力してください", class: "form-control", rows: 5 %>
+              </div>
+              <small class="text-muted">
+                ※プロモーションは2時間後に自動的に削除されます
+              </small>
+            </div>
+
+            <div class="d-grid">
+              <%= f.submit "アクションを起こす", class: "btn btn-success btn-lg", data: { confirm: "この内容でアクションを起こしますか？" } %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <%# 発信中のアクション一覧 %>
+      <div class="card shadow">
+        <div class="card-header bg-light">
+          <h4 class="mb-0">発信中のアクション</h4>
+        </div>
+        <div class="card-body p-4">
+          <% if @promotions.present? %>
+            <div class="table-responsive">
+              <table class="table table-hover align-middle">
+                <thead class="table-light">
+                  <tr>
+                    <th style="width: 25%">タイトル</th>
+                    <th style="width: 40%">内容</th>
+                    <th style="width: 20%">作成日時</th>
+                    <th style="width: 15%">操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @promotions.each do |promotion| %>
+                    <tr>
+                      <td class="fw-bold"><%= promotion.name %></td>
+                      <td><%= truncate(promotion.body, length: 50) %></td>
+                      <td><small><%= l promotion.created_at, format: :long %></small></td>
+                      <td>
+                        <%= link_to restaurant_promotion_path(promotion), method: :delete, class: "btn btn-outline-danger btn-sm", data: { confirm: "本当に削除しますか？" } do %>
+                          <i class="fas fa-trash-alt"></i> 削除
+                        <% end %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          <% else %>
+            <div class="alert alert-info mb-0">
+              <i class="fas fa-info-circle me-2"></i>
+              現在発信中のアクションはありません
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

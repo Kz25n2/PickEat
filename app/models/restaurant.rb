@@ -34,6 +34,10 @@ class Restaurant < ApplicationRecord
     is_active ? super : :inactive
   end
 
+  scope :search_by_keyword, -> (keyword) {
+    where("restaurants.name LIKE ? OR genres.name LIKE ? OR restaurants.address LIKE ?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%" ).joins(:genre)
+  }
+
   private
   
   def parking_lot?
