@@ -10,7 +10,7 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "./parking_toggle";
-
+import "./geocoding";
 
 Rails.start()
 Turbolinks.start()

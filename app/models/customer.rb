@@ -4,6 +4,9 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
   has_many :reviews, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
@@ -20,6 +23,8 @@ class Customer < ApplicationRecord
   def formatted_postal_code
     postal_code.insert(3, '-') if postal_code.present?
   end
+
+  scope :active, -> { where(is_active: true) }
 
   # ログイン可能かどうかを確認
   def active_for_authentication?

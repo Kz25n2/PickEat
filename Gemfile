@@ -68,3 +68,5 @@ gem "net-imap"
 
 gem "whenever", require: false
 gem "kaminari"
+gem "geocoder"
+gem "redis"
