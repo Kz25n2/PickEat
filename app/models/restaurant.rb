@@ -20,6 +20,9 @@ class Restaurant < ApplicationRecord
   validates :capacity, presence: true
   validates :parking_spaces, presence: true, if: :parking_lot?
 
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
   def formatted_postal_code
     postal_code.insert(3, '-') if postal_code.present?
   end
@@ -36,6 +39,10 @@ class Restaurant < ApplicationRecord
 
   scope :search_by_keyword, -> (keyword) {
     where("restaurants.name LIKE ? OR genres.name LIKE ? OR restaurants.address LIKE ?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%" ).joins(:genre)
+  }
+
+  scope :nearby, -> (latitude, longitude, distance) {
+    near([latitude, longitude], distance, units: :km)
   }
 
   private

@@ -3,13 +3,13 @@ class Public::ReviewsController < ApplicationController
   before_action :set_restaurant
 
   def index
-    @reviews = Review.where(restaurant_id: @restaurant.id)
+    @reviews = Review.where(restaurant_id: @restaurant.id, customers: { is_active: true })
   end
 
   def show
     @restaurant = Restaurant.find(params[:restaurant_id])
     @review = @restaurant.reviews.find(params[:id])
-    @comments = @review.comments.includes(:customer)
+    @comments = @review.comments.joins(:customer).where(customers: { is_active: true })
     @comment = @review.comments.new
   end
 
