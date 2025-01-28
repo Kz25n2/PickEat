@@ -55,10 +55,10 @@
 <!-- 【補足説明】 -->
 <!-- - テーマ提出時点では不要です。 -->
 <!-- - 当項目には「後ほど作成予定」と記載しましょう。 -->
-UI Flow：https://drive.google.com/file/d/1egDPMSQcF04_s-qi-yPIPIRmsB5B8gD2/view?usp=drive_link
-ER図：https://drive.google.com/file/d/1H-cpBZnLp47oy9HIOnyrC3iYkuNjJUIU/view?usp=drive_link
-アプリケーション設計書：https://docs.google.com/spreadsheets/d/1k0FcT4O6n1cIlLk2CwvjT6bUEF6nryP1QVVYabzhvN8/edit?usp=drive_link
-テーブル定義書：https://docs.google.com/spreadsheets/d/1d5e4kNwIUAcCM4Rn_jGXunr07k05znw9ygtBoD1QNWo/edit?usp=drive_link
+UI Flow：https://drive.google.com/file/d/1egDPMSQcF04_s-qi-yPIPIRmsB5B8gD2/view?usp=drive_link<br>
+ER図：https://drive.google.com/file/d/1H-cpBZnLp47oy9HIOnyrC3iYkuNjJUIU/view?usp=drive_link<br>
+アプリケーション設計書：https://docs.google.com/spreadsheets/d/1k0FcT4O6n1cIlLk2CwvjT6bUEF6nryP1QVVYabzhvN8/edit?usp=drive_link<br>
+テーブル定義書：https://docs.google.com/spreadsheets/d/1d5e4kNwIUAcCM4Rn_jGXunr07k05znw9ygtBoD1QNWo/edit?usp=drive_link<br>
 ​
 ## 開発環境
 - OS：Linux(CentOS)
