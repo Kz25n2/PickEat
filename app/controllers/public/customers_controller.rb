@@ -1,5 +1,6 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
+  before_action :is_matching_login_customer, only: [:edit, :update, :unsubscribe, :withdrawal]
   
   def show
     @customer = Customer.find(params[:id])
@@ -46,6 +47,13 @@ class Public::CustomersController < ApplicationController
     :postal_code, 
     :address
     )
+  end
+
+  def is_matching_login_customer
+    @customer = Customer.find(params[:id])
+    unless @customer == current_customer
+      redirect_to customer_path(current_customer)
+    end
   end
 
 end

@@ -1,5 +1,6 @@
 class Restaurant::OwnersController < ApplicationController
   before_action :authenticate_restaurant!
+  before_action :is_matching_login_restaurant, only: [:edit, :update, :unsubscribe, :withdrawal]
   
   def edit
     @owner = current_restaurant
@@ -46,6 +47,13 @@ class Restaurant::OwnersController < ApplicationController
       :parking_lot,
       :parking_spaces
     )
+  end
+
+  def is_matching_login_restaurant
+    @restaurant = Restaurant.find(params[:id])
+    unless @restaurant == current_restaurant
+      redirect_to restaurant_top_path(current_restaurant)
+    end
   end
 
 end
