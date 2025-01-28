@@ -1,6 +1,8 @@
 class Restaurant::PromotionsController < ApplicationController
   before_action :authenticate_restaurant!
-  
+  before_action :is_matching_login_restaurant, only: [:destroy]
+
+
   def promotion
     @promotion = Promotion.new
     @promotions = current_restaurant.promotions.active
@@ -34,6 +36,13 @@ class Restaurant::PromotionsController < ApplicationController
   
   def promotion_params
     params.require(:promotion).permit(:name, :body)
+  end
+
+  def is_matching_login_restaurant
+    @restaurant = restaurant.find(params[:id])
+    unless @restaurant == current_restaurant
+      redirect_to restaurant_top_path(current_restaurant)
+    end
   end
 
 end

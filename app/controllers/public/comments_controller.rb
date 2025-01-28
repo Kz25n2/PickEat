@@ -3,6 +3,7 @@ class Public::CommentsController < ApplicationController
   before_action :set_restaurant
   before_action :set_review
   before_action :set_comment, only: [:edit, :update, :destroy]
+  before_action :is_matching_login_customer, only: [:edit, :update, :destroy]
 
   def create
     @comment = @review.comments.new(comment_params)
@@ -53,6 +54,13 @@ class Public::CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:body)  # content はコメントの内容
+  end
+
+  def is_matching_login_customer
+    @customer = Customer.find(params[:id])
+    unless @customer == current_customer
+      redirect_to customer_path(current_customer)
+    end
   end
 
 end
