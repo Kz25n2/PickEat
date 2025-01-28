@@ -39,7 +39,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :edit, :create, :update, :destroy]
     resources :reviews, only: [:index, :destroy]
     resources :customers, only: [:index, :edit, :update, :destroy]
-    resources :restaurants, only: [:show, :edit, :update, :destroy]
+    resources :restaurants, only: [:edit, :update, :destroy]
     get '/top' => 'homes#top'
   end
 
