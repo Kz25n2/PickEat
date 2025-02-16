@@ -16,7 +16,7 @@
         <% if customer_signed_in? %>
           <div>
             <%= link_to "#", class: "btn #{params[:nearby] == 'true' ? 'btn-primary' : 'btn-outline-primary'} nearby-button", data: { target_path: promotions_path } do %>
-              <i class="fas fa-map-marker-alt"></i> 近くのお店
+              <i class="fas fa-map-marker-alt"></i> 近くの店舗
             <% end %>
           </div>
         <% end %>
