@@ -61,11 +61,11 @@ ER図：https://drive.google.com/file/d/1H-cpBZnLp47oy9HIOnyrC3iYkuNjJUIU/view?u
 テーブル定義書：https://docs.google.com/spreadsheets/d/1d5e4kNwIUAcCM4Rn_jGXunr07k05znw9ygtBoD1QNWo/edit?usp=drive_link<br>
 ​
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Amazon Linux release 2 (Karoo)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
-- IDE：Cloud9
+- IDE：Visual Studio Code（VSCode）
 ​
 ## 使用素材
 <!-- - 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。 -->
