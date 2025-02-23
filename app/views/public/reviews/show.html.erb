@@ -14,7 +14,7 @@
     <p class="card-text"><%= @review.body.truncate(100) %></p>
     <div class="d-md-flex bg-light">
       <div class="mb-md-0 mb-2">
-        <span class:"mr-2">コメント<%= @review.comments.count %>件</span>
+        <span class="mr-2">コメント<%= @review.comments.count %>件</span>
       </div>
       <span class="text-secondary mx-2 d-none d-md-block">|</span>
       <%= render 'public/favorites/button', review: @review %>
@@ -28,6 +28,7 @@
   </div>
 </div>
 
+<%= render 'layouts/errors', obj: @comment %>
 <%= render 'public/comments/form', restaurant: @restaurant, review: @review, comment: @comment %>
 
 <h4 class="mt-5">コメント一覧</h4>

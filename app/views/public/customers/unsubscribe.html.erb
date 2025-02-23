@@ -1,9 +1,30 @@
-<h2>退会確認画面</h2>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-10 col-md-8">
+      <div class="card shadow">
+        <div class="card-body p-4">
+          <h2 class="card-title text-center mb-4">退会確認画面</h2>
 
-<p>本当に退会しますか？</p>
+          <div class="alert alert-danger d-flex align-items-center" role="alert">
+            <i class="fas fa-triangle-exclamation fa-lg me-2"></i>
+            <ul>
+              <li>本当に退会しますか？</li>
+              <li>退会するとアカウントおよびすべてのデータが削除されます。</li>
+              <li>再度ご利用いただくには、新しいアカウントを作成する必要があります。</li>
+            </ul>
+          </div>
 
-<p>退会するとアカウントおよびすべてのデータが削除されます。</p>
-<p>再度ご利用いただくには、新しいアカウントを作成する必要があります。</p>
+          <div class="row justify-content-center">
+            <div class="col-12 col-md-5 text-center gap-3">
+              <%= link_to '戻る', customer_path(@customer), class:"btn btn-primary w-100 w-md-auto mt-3" %>
+            </div>
+            <div class="col-12 col-md-5 text-center gap-3">
+              <%= link_to '退会する', customers_withdrawal_customer_path(@customer), method: :patch, class:"btn btn-danger btn-md-lg w-100 w-md-auto mt-3" %>
+            </div>
+          </div>
 
-<%= link_to '戻る', customer_path(@customer), class: 'btn btn-primary' %>
-<%= link_to '退会する', customer_customers_withdrawal_path(@customer), method: :patch, class: 'btn btn-danger' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -6,11 +6,21 @@ ja:
       short: "%-m/%-d %-H:%M"
   
   activerecord:
+    errors:
+      models:
+        restaurant:
+          attributes:
+            genre:
+              blank: "を入力してください"  # presence: true の場合
+              required: "を入力してください"
     models:
       promotion: プロモーション
       customer: 顧客
       restaurant: 店舗
       admin: 管理者
+      genre: ジャンル
+      comment: コメント
+      review: レビュー
     attributes:
       promotion:
         name: タイトル
@@ -21,15 +31,38 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード（確認用）
+        last_name: お名前（姓）
+        first_name: お名前（名）
+        last_name_kana: フリガナ（セイ）
+        first_name_kana: フリガナ（メイ）
+        nickname: ニックネーム
+        telephone_number: 電話番号
+        postal_code: 郵便番号
+        address: 住所
       restaurant:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード（確認用）
+        name: レストラン名
+        genre: ジャンル
+        postal_code: 郵便番号
+        address: 住所
+        contact_number: 連絡先
+        business_open_hours: 営業開始時間
+        business_close_hours: 営業終了時間
+        min_price: 最小価格
+        max_price: 最大価格
+        capacity: 収容人数
+        parking_spaces: 駐車可能台数
       admin:
         email: メールアドレス
         password: パスワード
       genre:
         name: ジャンル名
+      comment:
+        body: コメント本文
+      review:
+        body: レビュー本文
 
   datetime:
     distance_in_words:
