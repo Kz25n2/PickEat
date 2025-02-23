@@ -1,5 +1,5 @@
 class Public::CommentsController < ApplicationController
-  before_action :authenticate_customer!
+  before_action :authenticate_customer!, only: [:create, :edit, :update, :destroy]
   before_action :set_restaurant
   before_action :set_review
   before_action :set_comment, only: [:edit, :update, :destroy]
@@ -14,12 +14,12 @@ class Public::CommentsController < ApplicationController
       redirect_to restaurant_review_path(@restaurant, @review)
     else
       flash[:alert] = "コメントの投稿に失敗しました。"
-      render :show
+      @comments = @review.comments
+      render "public/reviews/show"
     end
   end
 
   def edit
-    @comment = Comment.find(params[:id])
   end
 
   def update
@@ -57,9 +57,8 @@ class Public::CommentsController < ApplicationController
   end
 
   def is_matching_login_customer
-    @customer = Customer.find(params[:id])
-    unless @customer == current_customer
-      redirect_to customer_path(current_customer)
+    unless @comment.customer == current_customer
+      redirect_to restaurant_review_path(@restaurant, @review), alert: "権限がありません。"
     end
   end
 
