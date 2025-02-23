@@ -25,7 +25,7 @@
 私は友人や家族と外食に行くことになった際、何を食べたいのかを聞かれても浮かばずお店選びにいつも悩んでしまいます。<br>
 食べたい料理のジャンルは決まっていても、その中でお店を絞れないこともよくあります。<br>
 私のように外食のお店選びに悩んでしまう優柔不断な人はたくさんいると思います。<br>
-そういった状況でジャンルや価格帯で検索できる機能はもちろん、近くのお店で、「空いているからおいでよ」とアクションを起こしてもらえる機能があれば、迷わずにお店を決められて便利だと考えました。<br>
+そういった状況でジャンルやキーワードで検索できる機能はもちろん、近くのお店で、「空いているからおいでよ」とアクションを起こしてもらえる機能があれば、迷わずにお店を決められて便利だと考えました。<br>
 外食のお店選びに悩める人のためだけではなく、お店側の集客にもつながると考え、このテーマにしました。
 
 
@@ -61,11 +61,11 @@ ER図：https://drive.google.com/file/d/1H-cpBZnLp47oy9HIOnyrC3iYkuNjJUIU/view?u
 テーブル定義書：https://docs.google.com/spreadsheets/d/1d5e4kNwIUAcCM4Rn_jGXunr07k05znw9ygtBoD1QNWo/edit?usp=drive_link<br>
 ​
 ## 開発環境
-- OS：Linux(CentOS)
+- OS：Amazon Linux release 2 (Karoo)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
-- IDE：Cloud9
+- IDE：Visual Studio Code（VSCode）
 ​
 ## 使用素材
 <!-- - 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。 -->

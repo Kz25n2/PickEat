@@ -52,8 +52,10 @@ Rails.application.routes.draw do
       end
     end
     resources :customers, only: [:show, :edit, :update] do
-      patch 'customers/withdrawal'
-      get 'customers/unsubscribe'
+      member do
+        patch 'customers/withdrawal'
+        get 'customers/unsubscribe'
+      end
     end
     get 'genre_search', to: 'searches#genre_search', as: 'genre_search'
     get 'keyword_search', to: 'searches#keyword_search', as: 'keyword_search'

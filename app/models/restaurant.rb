@@ -15,6 +15,8 @@ class Restaurant < ApplicationRecord
   validates :postal_code, presence: true
   validates :address, presence: true
   validates :contact_number, presence: true
+  validates :business_open_hours, presence: true
+  validates :business_close_hours, presence: true
   validates :min_price, presence: true
   validates :max_price, presence: true
   validates :capacity, presence: true
