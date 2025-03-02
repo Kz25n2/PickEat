@@ -60,7 +60,7 @@ class Public::ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:body)
+    params.require(:review).permit(:body, :rating)
   end
 
   def is_matching_login_customer

@@ -14,6 +14,7 @@
                 <% end %>
               </div>
               <p class="text-secondary"><small><%= review.created_at.strftime("%Y-%m-%d") %></small></p>
+              <%= render 'public/reviews/output_star', review: review %>
               <p class="card-text"><%= review.body.truncate(100) %></p>
               <p>
                 レビュー店舗：
