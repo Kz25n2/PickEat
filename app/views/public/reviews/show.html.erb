@@ -11,6 +11,7 @@
       <% end %>
     </div>
     <p class="text-secondary"><small><%= @review.created_at.strftime("%Y-%m-%d") %></small></p>
+    <%= render 'public/reviews/output_star', review: @review %>
     <p class="card-text"><%= @review.body.truncate(100) %></p>
     <div class="d-md-flex bg-light">
       <div class="mb-md-0 mb-2">
@@ -20,9 +21,9 @@
       <%= render 'public/favorites/button', review: @review %>
       <% if @review.customer == current_customer %>
         <span class="text-secondary mx-2 d-none d-md-block">|</span>
-        <%= link_to "編集", edit_restaurant_review_path(@review.restaurant_id, @review), class:"mx-2" %>
+        <%= link_to "編集", edit_restaurant_review_path(@review.restaurant_id, @review), class:"mx-2", style: "color: #000; text-decoration: underline" %>
         <span class="text-secondary mx-2">|</span>
-        <%= link_to "削除", restaurant_review_path(@review.restaurant_id, @review), method: :delete, data: { confirm:  "本当に削除しますか？" }, class:"ml-2" %>
+        <%= link_to "削除", restaurant_review_path(@review.restaurant_id, @review), method: :delete, data: { confirm:  "本当に削除しますか？" }, class:"ml-2", style: "color: #000; text-decoration: underline" %>
       <% end %>
     </div>
   </div>
@@ -46,8 +47,8 @@
           </div>
           <p><%= comment.body %></p>
           <% if comment.customer == current_customer %>
-            <%= link_to '編集', edit_restaurant_review_comment_path(@restaurant, @review, comment) %> |
-            <%= link_to '削除', restaurant_review_comment_path(@restaurant, @review, comment), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' } %>
+            <%= link_to '編集', edit_restaurant_review_comment_path(@restaurant, @review, comment), style: "color: #000; text-decoration: underline" %> |
+            <%= link_to '削除', restaurant_review_comment_path(@restaurant, @review, comment), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, style: "color: #000; text-decoration: underline" %>
           <% end %>
         </div>
       </div>

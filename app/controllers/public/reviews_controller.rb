@@ -1,10 +1,9 @@
 class Public::ReviewsController < ApplicationController
   before_action :authenticate_customer!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_restaurant
-  before_action :is_matching_login_customer, only: [:edit, :update, :destroy]
 
   def index
-    @reviews = Review.where(restaurant_id: @restaurant.id, customers: { is_active: true })
+    @reviews = Review.joins(:customer).where(restaurant_id: @restaurant.id, customers: { is_active: true })
   end
 
   def show
@@ -61,7 +60,7 @@ class Public::ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:body)
+    params.require(:review).permit(:body, :rating)
   end
 
   def is_matching_login_customer
