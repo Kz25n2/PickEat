@@ -27,8 +27,6 @@ Rails.application.routes.draw do
     resources :owners, only: [:edit, :update] do
       member do
         patch :withdrawal
-      end
-      collection do
         get :unsubscribe
       end
     end

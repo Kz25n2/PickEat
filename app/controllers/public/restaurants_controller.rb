@@ -5,13 +5,13 @@ class Public::RestaurantsController < ApplicationController
 
       current_location = [params[:latitude].to_f, params[:longitude].to_f]
       # 現在のユーザーの住所から近い店舗を取得
-      @restaurants = Restaurant.near(
+      @restaurants = Restaurant.where(is_active: true).near(
         current_location,
         180, # 10km以内
         units: :km
       ).page(params[:page])
     else
-      @restaurants = Restaurant.page(params[:page])
+      @restaurants = Restaurant.where(is_active: true).page(params[:page])
     end
   end
 

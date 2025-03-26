@@ -50,8 +50,8 @@ class Restaurant::OwnersController < ApplicationController
   end
 
   def is_matching_login_restaurant
-    @restaurant = Restaurant.find(params[:id])
-    unless @restaurant == current_restaurant
+    @owner = Restaurant.find(params[:id])
+    unless @owner == current_restaurant
       redirect_to restaurant_top_path(current_restaurant)
     end
   end
