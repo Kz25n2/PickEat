@@ -6,6 +6,17 @@
           <h2 class="card-title text-center mb-4">レビュー投稿</h2>
           <%= render 'layouts/errors', obj: @review %>
           <%= form_with model: @review, url: restaurant_reviews_path(@restaurant), local: true do |f| %>
+            <div id="star" class="mb-3"></div>
+            <script>
+              var elem = document.querySelector('#star');
+              var opt = {
+                starOn: "<%= asset_path('raty/star-on.png') %>",
+                starOff: "<%= asset_path('raty/star-off.png') %>",
+                starHalf: "<%= asset_path('raty/star-half.png') %>",
+                scoreName: "review[rating]"
+              };
+              raty(elem,opt);
+            </script>
             <div class="field">
               <%= f.text_area :body, placeholder: "ここにレビューを記載してください", class: "form-control mb-3" %>
             </div>
